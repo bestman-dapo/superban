@@ -1,0 +1,19 @@
+{
+    "name": "oladapo/superban",
+    "description": "Rate limits users request to application",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Oladapo\\Superban\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Oladapo"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "guzzlehttp/guzzle": "^7.0.1"
+    }
+}
