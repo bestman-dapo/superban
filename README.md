@@ -14,7 +14,7 @@ To use Superban package, Follow these steps:
 -   This package should be placed inside the 'packages' directory in your project root
 -   Add ... Superban\Providers\SuperbanProvider::class ... to the providers array in config/app.php
 -   Add ... 'superban' => \Superban\Middleware\SuperbanMiddleware::class ... to the middlewareAliases in app/Http/Kernel.php
--   Add ... "Superban\\": "packages/superban/src/ ... to the autoload->psr4 array in the composer.json file in your laravel project root
+-   Add ... "Superban\\\": "packages/superban/src/ ... to the autoload->psr4 array in the composer.json file in your laravel project root
 -   run command composer dump-autoload
 -   Finally run 'php artisan superban:activate' command.
 
