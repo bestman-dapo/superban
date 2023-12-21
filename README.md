@@ -12,6 +12,7 @@ This package will add the ability to ban a client completely for a period of tim
 To use Superban package, Follow these steps:
 
 -   This package should be placed inside the 'packages' directory in your project root
+-   In the .env file of your app, specify which User Identifier you wish for rate limiting. By default 'ipaddress' is used but to configure another identifier set the RATE_LIMIT_ID in your .env to any of the following ipaddress, userid or useremail 
 -   Add ... Superban\Providers\SuperbanProvider::class ... to the providers array in config/app.php
 -   Add ... 'superban' => \Superban\Middleware\SuperbanMiddleware::class ... to the middlewareAliases in app/Http/Kernel.php
 -   Add ... "Superban\\\": "packages/superban/src/ ... to the autoload->psr4 array in the composer.json file in your laravel project root
