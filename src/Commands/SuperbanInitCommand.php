@@ -44,14 +44,8 @@ class SuperbanInitCommand extends Command
             '--path' => 'packages/superban/src/Migrations/superbanControlTable.php',
         ]);
 
-        $this->info('Command executed successfully!');
+        $this->info('Superban activated succesfully. Enjoy!');
         return 0; // Indicate successful completion
 
-        // $path = $this->argument('path');
-        // if (file_exists($path)) {
-        //     $this->import($path);
-        // } else {
-        //     $this->error('File not exists');
-        // }
     }
 }

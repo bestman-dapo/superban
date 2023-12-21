@@ -5,6 +5,7 @@ This package will add the ability to ban a client completely for a period of tim
 -   Define Number of requests that clients can make to specific apps within a defined duration.
 -   Determine for how long a client is banned is they exceed the rate limit.
 -   Determine which User Identifier will be used for rate limiting. For example, ipaddress, userid or useremail.
+-   If userid or useremail are configured for User Identification then Users must be logged in, else a 401 error is returned.
 -   Define specific routes or group all routes for rate limiting.
 
 ## Activating Superban
