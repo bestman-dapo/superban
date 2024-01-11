@@ -42,7 +42,7 @@ class SuperbanMiddleware
                 $userid = Auth::user()->id;
                 $userRateResult = DB::select("SELECT * FROM superbancontroltable WHERE user_identifier = '$userid' AND `type` = '$identifier' AND `reqUrl` = '$this->routeName' LIMIT 1");
 
-                $this->processRate($userRateResult, $userid, "userid" );
+                $this->processRate($userRateResult, $userid, "userid");
             }
         } elseif ($identifier == 'ipaddress') {
             //use ip address
@@ -65,7 +65,8 @@ class SuperbanMiddleware
         return $next($request);
     }
 
-    private function processRate($userRateResult, $user_identifier, $identifier){
+    private function processRate($userRateResult, $user_identifier, $identifier)
+    {
         if (!empty($userRateResult)) {
             $currentRate = $userRateResult[0]->requestCount;
 
@@ -92,9 +93,12 @@ class SuperbanMiddleware
                 } else {
                     abort(403, "Rate limit exceeded. User under ban.");
                 }
+            } elseif ($currentRate <= $this->maxReq && $diff_minutes > $this->rateMins) {
+                //reset rate limit
+                DB::update("UPDATE superbancontroltable SET requestCount = 1, initialRequestTime = ?, lastSuccessTime = ? WHERE user_identifier = ? AND `type` = ? AND `reqUrl` = ?", [$this->reqTime, $this->reqTime, $user_identifier, $identifier, $this->routeName]);
             } else {
                 //update last success time
-                DB::update("UPDATE superbancontroltable SET requestCount = (requestCount + 1) AND lastSuccessTime = ? WHERE user_identifier = ? AND `type` = ? AND `reqUrl` = ?", [$this->reqTime, $user_identifier, $identifier, $this->routeName]);
+                DB::update("UPDATE superbancontroltable SET requestCount = (requestCount + 1), lastSuccessTime = ? WHERE user_identifier = ? AND `type` = ? AND `reqUrl` = ?", [$this->reqTime, $user_identifier, $identifier, $this->routeName]);
             }
         } elseif (empty($userRateResult)) {
             //create rate entry
