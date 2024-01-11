@@ -16,6 +16,8 @@ class SuperbanMiddleware
     protected $reqTime;
     protected $route;
     protected $routeName;
+    protected $sdsc;
+    
 
     /**
      * Handle an incoming request.

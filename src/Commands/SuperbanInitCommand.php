@@ -15,7 +15,8 @@ class SuperbanInitCommand extends Command
      */
     protected $signature = 'superban:activate';
 
-    
+
+
     /**
      * The console command description.
      *
