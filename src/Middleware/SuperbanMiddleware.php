@@ -17,7 +17,7 @@ class SuperbanMiddleware
     protected $route;
     protected $routeName;
     protected $sdsc;
-    
+    //this is awesome
 
     /**
      * Handle an incoming request.
